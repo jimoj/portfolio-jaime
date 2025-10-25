@@ -1,0 +1,34 @@
+<div class="intro-overlay" [class.fade-out]="isComplete">
+  <div class="laptop-animation" [class.hide-laptop]="step >= 5">
+    <div class="laptop" [class.step1]="step >= 1" [class.step2]="step >= 2" [class.step3]="step >= 3">
+      <div class="laptop-base" [class.hide]="step >= 5"></div>
+      <div class="laptop-screen" [class.hide-frame]="step >= 5">
+        <div class="screen-glow" [class.active]="step >= 3"></div>
+        <div class="screen-content" [class.show]="step >= 3" [class.zoom-screen]="step >= 5">
+          <div class="mini-website">
+            <div class="mini-nav"></div>
+            <div class="mini-hero">
+              <div class="mini-profile"></div>
+              <div class="mini-text">
+                <div class="mini-line"></div>
+                <div class="mini-line short"></div>
+              </div>
+            </div>
+            <div class="mini-sections">
+              <div class="mini-section"></div>
+              <div class="mini-section"></div>
+            </div>
+          </div>
+          <div class="loading-bar" [class.hide]="step >= 5">
+            <div class="progress" [class.animate]="step >= 3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="intro-text" [class.show]="step >= 4" [class.hide]="step >= 5">
+    <h1>JAIME JIMÉNEZ</h1>
+    <p>Full Stack Developer</p>
+  </div>
+  <div class="website-overlay" [class.reveal]="step >= 5"></div>
+</div>

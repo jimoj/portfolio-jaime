@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import * as THREE from 'three';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { Macbook3DComponent } from '../macbook-3d/macbook-3d.component';
@@ -7,7 +8,7 @@ import { Macbook3DComponent } from '../macbook-3d/macbook-3d.component';
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, TranslatePipe, Macbook3DComponent],
+  imports: [CommonModule, RouterModule, TranslatePipe, Macbook3DComponent],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })
