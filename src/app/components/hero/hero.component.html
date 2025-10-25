@@ -123,7 +123,8 @@
       <div class="tech-carousel">
         <div *ngFor="let tech of technologies.concat(technologies); trackBy: trackByTech" 
              class="tech-item tech-card">
-          <img [src]="tech.icon" [alt]="tech.name" class="w-12 h-12 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+          <img [src]="tech.icon" [alt]="tech.name" 
+               [class]="'w-12 h-12 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300' + (tech.name === 'GitHub Actions' ? ' github-icon' : '')">
           <h4 class="text-sm font-semibold text-white group-hover:text-green-400 transition-colors">{{ tech.name }}</h4>
         </div>
       </div>

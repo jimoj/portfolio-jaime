@@ -354,3 +354,12 @@
     opacity: 0;
   }
 }
+
+// GitHub icon theme adaptation
+.github-icon {
+  filter: brightness(0) invert(1); // White in dark mode
+  
+  @media (prefers-color-scheme: light) {
+    filter: none; // Original black in light mode
+  }
+}

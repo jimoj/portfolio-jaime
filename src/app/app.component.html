@@ -1,2 +1,5 @@
-<app-navigation></app-navigation>
-<router-outlet></router-outlet>
+<app-laptop-intro *ngIf="showIntro" (animationComplete)="onIntroComplete()"></app-laptop-intro>
+<div [style.display]="showIntro ? 'none' : 'block'">
+  <app-navigation></app-navigation>
+  <router-outlet></router-outlet>
+</div>
