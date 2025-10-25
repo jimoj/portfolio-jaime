@@ -1,0 +1,24 @@
+nav {
+  backdrop-filter: blur(10px);
+}
+
+// Active link styles
+.router-link-active {
+  color: rgb(168 85 247);
+}
+
+// Mobile menu animation
+.mobile-menu {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,87 @@
+<section class="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Header con parallax -->
+    <div class="text-center mb-16" [style.transform]="'translateY(' + (scrollY * 0.3) + 'px)'">
+      <h2 class="text-5xl font-bold text-white mb-6">
+        Sobre <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Mí</span>
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Texto principal -->
+      <div class="space-y-6" [style.transform]="'translateY(' + (scrollY * 0.1) + 'px)'">
+        <div class="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700">
+          <h3 class="text-2xl font-semibold text-white mb-4">Desarrollador Full Stack</h3>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Soy un desarrollador apasionado por crear experiencias digitales excepcionales. 
+            Con más de 3 años de experiencia, me especializo en tecnologías modernas como 
+            Angular, React y Node.js.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            Mi enfoque se centra en escribir código limpio, escalable y en crear interfaces 
+            de usuario intuitivas que brinden la mejor experiencia posible.
+          </p>
+        </div>
+      </div>
+
+      <!-- Skills con animaciones -->
+      <div class="space-y-6" [style.transform]="'translateY(' + (scrollY * -0.1) + 'px)'">
+        <h3 class="text-2xl font-semibold text-white mb-6">Habilidades Técnicas</h3>
+        <div class="space-y-4">
+          <div *ngFor="let skill of skills" class="skill-item">
+            <div class="flex justify-between mb-2">
+              <span class="text-white font-medium">{{ skill.name }}</span>
+              <span class="text-gray-400">{{ skill.level }}%</span>
+            </div>
+            <div class="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
+              <div 
+                class="h-full bg-gradient-to-r transition-all duration-1000 ease-out rounded-full"
+                [class]="skill.color"
+                [style.width.%]="skill.level">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experiencia -->
+    <div class="mt-20" [style.transform]="'translateY(' + (scrollY * 0.05) + 'px)'">
+      <h3 class="text-3xl font-bold text-white text-center mb-12">Experiencia</h3>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gray-800 bg-opacity-30 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-purple-500 transition-all duration-300">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+              <span class="text-white font-bold">FE</span>
+            </div>
+            <div class="ml-4">
+              <h4 class="text-xl font-semibold text-white">Frontend Developer</h4>
+              <p class="text-gray-400">2021 - Presente</p>
+            </div>
+          </div>
+          <p class="text-gray-300">
+            Desarrollo de aplicaciones web modernas con Angular, React y Vue.js. 
+            Implementación de diseños responsivos y optimización de rendimiento.
+          </p>
+        </div>
+
+        <div class="bg-gray-800 bg-opacity-30 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-purple-500 transition-all duration-300">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
+              <span class="text-white font-bold">BE</span>
+            </div>
+            <div class="ml-4">
+              <h4 class="text-xl font-semibold text-white">Backend Developer</h4>
+              <p class="text-gray-400">2020 - Presente</p>
+            </div>
+          </div>
+          <p class="text-gray-300">
+            Desarrollo de APIs REST y GraphQL con Node.js, Express y bases de datos 
+            relacionales y no relacionales.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
