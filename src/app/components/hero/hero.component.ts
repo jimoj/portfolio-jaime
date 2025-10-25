@@ -1,19 +1,18 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as THREE from 'three';
-import { gsap } from 'gsap';
 import { TranslatePipe } from '../../pipes/translate.pipe';
+import { Macbook3DComponent } from '../macbook-3d/macbook-3d.component';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, TranslatePipe],
+  imports: [CommonModule, TranslatePipe, Macbook3DComponent],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
 })
 export class HeroComponent implements AfterViewInit, OnDestroy {
   @ViewChild('scene') sceneContainer!: ElementRef;
-  @ViewChild('floatingScene') floatingSceneContainer!: ElementRef;
   @ViewChild('parallaxContainer') parallaxContainer!: ElementRef;
 
   scrollY = 0;
@@ -34,13 +33,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   ];
   
 
-  private floatingScene!: THREE.Scene;
-  private floatingCamera!: THREE.PerspectiveCamera;
-  private floatingRenderer!: THREE.WebGLRenderer;
-  private floatingGeometry!: THREE.IcosahedronGeometry;
-  private floatingMaterial!: THREE.MeshStandardMaterial;
-  private floatingMesh!: THREE.Mesh;
-  private floatingAnimationId: number | null = null;
+
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
   private renderer!: THREE.WebGLRenderer;
@@ -57,9 +50,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     this.initThreeJS();
     this.createParticles();
-    this.initFloatingElement();
     this.animate();
-    this.animateFloating();
     this.initParallax();
     this.initMouseMovement();
 
@@ -137,47 +128,12 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
     this.renderer.render(this.scene, this.camera);
   }
 
-  private initFloatingElement() {
-    this.floatingScene = new THREE.Scene();
-    this.floatingCamera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    this.floatingRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    this.floatingRenderer.setSize(150, 150);
-    this.floatingRenderer.setClearColor(0x000000, 0);
-    this.floatingSceneContainer.nativeElement.appendChild(this.floatingRenderer.domElement);
 
-    // Usar la misma geometría de partículas pero como esfera sólida
-    this.floatingGeometry = new THREE.IcosahedronGeometry(1, 1);
-    this.floatingMaterial = new THREE.MeshStandardMaterial({
-      color: 0x16a34a,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.9
-    });
-    this.floatingMesh = new THREE.Mesh(this.floatingGeometry, this.floatingMaterial);
-
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
-    const directionalLight = new THREE.DirectionalLight(0x16a34a, 1);
-    directionalLight.position.set(2, 2, 2);
-    this.floatingScene.add(ambientLight);
-    this.floatingScene.add(directionalLight);
-    this.floatingScene.add(this.floatingMesh);
-
-    this.floatingCamera.position.z = 4;
-  }
-
-  private animateFloating() {
-    this.floatingAnimationId = requestAnimationFrame(() => this.animateFloating());
-
-    this.floatingMesh.rotation.x += 0.005;
-    this.floatingMesh.rotation.y += 0.01;
-
-    this.floatingRenderer.render(this.floatingScene, this.floatingCamera);
-  }
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
     this.scrollY = window.scrollY;
-    this.updateFloatingPosition();
+
     this.checkExperienceCards();
   }
   
@@ -201,19 +157,11 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
     return card ? card.classList.contains('visible') : false;
   }
 
-  private updateFloatingPosition() {
-    if (this.floatingSceneContainer) {
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      const progress = Math.min(this.scrollY / maxScroll, 1);
-      const translateY = progress * (window.innerHeight - 150);
-      const translateX = Math.sin(progress * Math.PI * 6) * 200;
-      const rotation = progress * 720;
-      const scale = 0.8 + Math.sin(progress * Math.PI * 8) * 0.3;
-      
-      this.floatingSceneContainer.nativeElement.style.transform = 
-        `translate(${translateX}px, ${translateY}px) rotate(${rotation}deg) scale(${scale})`;
-    }
+  trackByTech(index: number, tech: any): string {
+    return tech.name + index;
   }
+
+
 
   private initParallax() {
     window.addEventListener('scroll', () => {
@@ -254,16 +202,12 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
     if (this.animationFrameId !== null) {
       cancelAnimationFrame(this.animationFrameId);
     }
-    if (this.floatingAnimationId !== null) {
-      cancelAnimationFrame(this.floatingAnimationId);
-    }
+
     
     if (this.geometry) this.geometry.dispose();
-    if (this.floatingGeometry) this.floatingGeometry.dispose();
     if (this.material) this.material.dispose();
-    if (this.floatingMaterial) this.floatingMaterial.dispose();
     if (this.renderer) this.renderer.dispose();
-    if (this.floatingRenderer) this.floatingRenderer.dispose();
+
     
     document.body.style.overflow = 'auto';
   }
