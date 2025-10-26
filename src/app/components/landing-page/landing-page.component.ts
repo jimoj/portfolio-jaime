@@ -6,13 +6,13 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 import { Macbook3DComponent } from '../macbook-3d/macbook-3d.component';
 
 @Component({
-  selector: 'app-hero',
+  selector: 'app-landing-page',
   standalone: true,
   imports: [CommonModule, RouterModule, TranslatePipe, Macbook3DComponent],
-  templateUrl: './hero.component.html',
-  styleUrl: './hero.component.scss'
+  templateUrl: './landing-page.component.html',
+  styleUrl: './landing-page.component.scss'
 })
-export class HeroComponent implements AfterViewInit, OnDestroy {
+export class LandingPageComponent implements AfterViewInit, OnDestroy {
   @ViewChild('scene') sceneContainer!: ElementRef;
   @ViewChild('parallaxContainer') parallaxContainer!: ElementRef;
 
