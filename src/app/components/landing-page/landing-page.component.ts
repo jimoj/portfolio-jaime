@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import * as THREE from 'three';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { Macbook3DComponent } from '../macbook-3d/macbook-3d.component';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -46,7 +47,13 @@ export class LandingPageComponent implements AfterViewInit, OnDestroy {
   private mouseX = 0;
   private mouseY = 0;
 
-  constructor() {}
+  isDarkMode = true;
+
+  constructor(private themeService: ThemeService) {
+    this.themeService.isDarkMode$.subscribe(isDark => {
+      this.isDarkMode = isDark;
+    });
+  }
 
   ngAfterViewInit() {
     this.initThreeJS();
