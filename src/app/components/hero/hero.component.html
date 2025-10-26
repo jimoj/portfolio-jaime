@@ -18,7 +18,7 @@
             <!-- Profile Image -->
             <div class="profile-image-container relative cursor-pointer" (click)="openImageModal()">
               <img 
-                src="assets/images/jaime-jimenez.jpg" 
+                src="./assets/images/jaime-jimenez.jpg" 
                 alt="Jaime Jiménez - Full Stack Developer" 
                 class="profile-image relative z-10 w-24 h-24 lg:w-32 lg:h-32 rounded-full object-cover object-top transform hover:scale-110 transition-all duration-500"
                 loading="eager"
@@ -202,7 +202,7 @@
   <div class="modal-content relative" (click)="$event.stopPropagation()">
     <div class="modal-image-container" [class.animate]="isModalOpen">
       <img 
-        src="assets/images/jaime-jimenez.jpg" 
+        src="./assets/images/jaime-jimenez.jpg" 
         alt="Jaime Jiménez - Full Stack Developer" 
         class="modal-image w-80 h-80 rounded-2xl object-cover object-top shadow-2xl">
       <div class="modal-overlay absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent rounded-2xl"></div>
