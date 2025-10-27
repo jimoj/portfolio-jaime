@@ -68,7 +68,10 @@ export class LandingPageComponent implements AfterViewInit, OnDestroy {
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
     this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    this.renderer.setSize(400, 400);
+    
+    // Tamaño responsive original para desktop
+    const size = window.innerWidth < 640 ? 256 : window.innerWidth < 768 ? 320 : 400;
+    this.renderer.setSize(size, size);
     this.renderer.setClearColor(0x000000, 0);
     this.sceneContainer.nativeElement.appendChild(this.renderer.domElement);
 
@@ -192,7 +195,8 @@ export class LandingPageComponent implements AfterViewInit, OnDestroy {
   @HostListener('window:resize')
   onWindowResize() {
     if (this.camera && this.renderer) {
-      this.renderer.setSize(400, 400);
+      const size = window.innerWidth < 640 ? 256 : window.innerWidth < 768 ? 320 : 400;
+      this.renderer.setSize(size, size);
     }
   }
 

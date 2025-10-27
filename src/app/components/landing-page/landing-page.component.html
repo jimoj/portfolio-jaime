@@ -9,18 +9,18 @@
   </div>
 
   <!-- Main Content -->
-  <div class="relative z-10 flex items-center justify-between min-h-screen px-6 lg:px-20">
+  <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between min-h-screen px-6 lg:px-20 pt-20">
     <!-- Left Side - Text Content -->
-    <div class="flex-1 max-w-2xl" #parallaxContainer>
+    <div class="flex-1 max-w-2xl w-full" #parallaxContainer>
       <div class="hero-text space-y-6" [style.transform]="'translateY(' + parallaxOffset + 'px)'">
         <div class="overflow-hidden">
-          <div class="flex items-center space-x-8 mb-4 ml-4">
+          <div class="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-8 mb-4">
             <!-- Profile Image -->
-            <div class="profile-image-container relative cursor-pointer" (click)="openImageModal()">
+            <div class="profile-image-container relative cursor-pointer mb-4 lg:mb-0" (click)="openImageModal()">
               <img 
                 src="./assets/images/jaime-jimenez.jpg" 
                 alt="Jaime Jiménez - Full Stack Developer" 
-                class="profile-image relative z-10 w-24 h-24 lg:w-32 lg:h-32 rounded-full object-cover object-top transform hover:scale-110 transition-all duration-500"
+                class="profile-image relative z-10 w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-full object-cover object-top transform hover:scale-110 transition-all duration-500"
                 loading="eager"
                 decoding="async"
                 fetchpriority="high"
@@ -29,7 +29,7 @@
             </div>
             
             <!-- Name -->
-            <h1 class="text-5xl lg:text-7xl font-bold text-white leading-tight animate-float">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight animate-float text-center lg:text-left">
               <span class="block">Jaime</span>
               <span class="block text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
                 Jiménez
@@ -39,38 +39,35 @@
         </div>
         
         <div class="overflow-hidden">
-          <h2 class="text-2xl lg:text-3xl text-gray-300 font-light">
+          <h2 class="text-2xl lg:text-3xl text-gray-300 font-light text-center lg:text-left">
             {{ 'hero.title' | translate }}
           </h2>
         </div>
         
         <div class="overflow-hidden">
-          <p class="text-lg text-gray-400 max-w-lg leading-relaxed">
+          <p class="text-lg text-gray-400 max-w-lg leading-relaxed text-center lg:text-left">
             {{ 'hero.description' | translate }}
           </p>
         </div>
 
-        <div class="flex space-x-6 pt-8">
-          <button class="px-8 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-full hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105">
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 pt-8 justify-center lg:justify-start">
+          <button class="px-6 py-3 sm:px-8 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-full hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 text-center">
             {{ 'hero.viewProjects' | translate }}
           </button>
-          <a routerLink="/contact" class="px-8 py-3 border border-gray-600 text-gray-300 rounded-full hover:border-green-400 hover:text-green-400 transition-all duration-300 inline-block">
+          <a routerLink="/contact" class="px-6 py-3 sm:px-8 border border-gray-600 text-gray-300 rounded-full hover:border-green-400 hover:text-green-400 transition-all duration-300 inline-block text-center">
             {{ 'hero.contact' | translate }}
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Right Side - 3D Scene -->
-    <div class="flex-1 flex justify-center items-center">
-      <div class="hero-3d w-96 h-96 relative" #scene>
+    <!-- Right Side - 3D Scene (Desktop only) -->
+    <div class="hidden lg:flex flex-1 justify-center items-center">
+      <div class="hero-3d w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 relative" #scene>
         <!-- El contenedor 3D se manejará con Three.js -->
       </div>
     </div>
   </div>
-
-  <!-- MacBook 3D Component -->
- <!--  <app-macbook-3d></app-macbook-3d> -->
 
   <!-- Scroll Indicator -->
   <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
@@ -81,6 +78,13 @@
       </div>
     </div>
   </div>
+
+  <!-- MacBook 3D Component -->
+ <!--  <app-macbook-3d></app-macbook-3d> -->
+
+
+
+
 </div>
 
 <!-- Services Section -->
@@ -88,22 +92,22 @@
   <div class="space-particles"></div>
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-16" [style.transform]="'translateY(' + (scrollY * 0.3) + 'px)'">
-      <h2 class="text-5xl font-bold text-white mb-6">{{ 'services.title' | translate }}</h2>
-      <p class="text-xl text-gray-400">{{ 'services.subtitle' | translate }}</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">{{ 'services.title' | translate }}</h2>
+      <p class="text-lg sm:text-xl text-gray-400">{{ 'services.subtitle' | translate }}</p>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-gray-800 bg-opacity-50 p-8 rounded-2xl" [style.transform]="'translateY(' + (scrollY * 0.1) + 'px)'">
-        <h3 class="text-2xl font-bold text-white mb-4">{{ 'services.frontend.title' | translate }}</h3>
-        <p class="text-gray-300">{{ 'services.frontend.description' | translate }}</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <div class="bg-gray-800 bg-opacity-50 p-6 md:p-8 rounded-2xl" [style.transform]="'translateY(' + (scrollY * 0.1) + 'px)'">
+        <h3 class="text-xl md:text-2xl font-bold text-white mb-4">{{ 'services.frontend.title' | translate }}</h3>
+        <p class="text-gray-300 text-sm md:text-base">{{ 'services.frontend.description' | translate }}</p>
       </div>
-      <div class="bg-gray-800 bg-opacity-50 p-8 rounded-2xl" [style.transform]="'translateY(' + (scrollY * 0.15) + 'px)'">
-        <h3 class="text-2xl font-bold text-white mb-4">{{ 'services.backend.title' | translate }}</h3>
-        <p class="text-gray-300">{{ 'services.backend.description' | translate }}</p>
+      <div class="bg-gray-800 bg-opacity-50 p-6 md:p-8 rounded-2xl" [style.transform]="'translateY(' + (scrollY * 0.15) + 'px)'">
+        <h3 class="text-xl md:text-2xl font-bold text-white mb-4">{{ 'services.backend.title' | translate }}</h3>
+        <p class="text-gray-300 text-sm md:text-base">{{ 'services.backend.description' | translate }}</p>
       </div>
-      <div class="bg-gray-800 bg-opacity-50 p-8 rounded-2xl" [style.transform]="'translateY(' + (scrollY * 0.2) + 'px)'">
-        <h3 class="text-2xl font-bold text-white mb-4">{{ 'services.devops.title' | translate }}</h3>
-        <p class="text-gray-300">{{ 'services.devops.description' | translate }}</p>
+      <div class="bg-gray-800 bg-opacity-50 p-6 md:p-8 rounded-2xl" [style.transform]="'translateY(' + (scrollY * 0.2) + 'px)'">
+        <h3 class="text-xl md:text-2xl font-bold text-white mb-4">{{ 'services.devops.title' | translate }}</h3>
+        <p class="text-gray-300 text-sm md:text-base">{{ 'services.devops.description' | translate }}</p>
       </div>
     </div>
   </div>
@@ -114,8 +118,8 @@
   <div class="space-particles"></div>
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-16">
-      <h2 class="text-5xl font-bold text-white mb-6">{{ 'technologies.title' | translate }}</h2>
-      <p class="text-xl text-gray-400">{{ 'technologies.subtitle' | translate }}</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">{{ 'technologies.title' | translate }}</h2>
+      <p class="text-lg sm:text-xl text-gray-400">{{ 'technologies.subtitle' | translate }}</p>
     </div>
     
     <!-- Carrusel horizontal con efecto 3D -->
@@ -137,58 +141,58 @@
   <div class="space-particles"></div>
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-16">
-      <h2 class="text-5xl font-bold text-white mb-6">{{ 'experience.title' | translate }}</h2>
-      <p class="text-xl text-gray-400">{{ 'experience.subtitle' | translate }}</p>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">{{ 'experience.title' | translate }}</h2>
+      <p class="text-lg sm:text-xl text-gray-400">{{ 'experience.subtitle' | translate }}</p>
     </div>
     
     <div class="space-y-16">
       <!-- Card desde la izquierda -->
       <div class="flex justify-start">
-        <div class="bg-gray-800 bg-opacity-40 p-8 rounded-2xl max-w-2xl hover:bg-opacity-60 experience-card" 
+        <div class="bg-gray-800 bg-opacity-40 p-6 md:p-8 rounded-2xl w-full max-w-2xl hover:bg-opacity-60 experience-card" 
              [class.visible]="isCardVisible(0)">
-          <h3 class="text-2xl font-bold text-white mb-2">{{ 'experience.senior.title' | translate }}</h3>
-          <p class="text-green-400 mb-4">{{ 'experience.senior.period' | translate }}</p>
-          <p class="text-gray-300">{{ 'experience.senior.description' | translate }}</p>
+          <h3 class="text-xl md:text-2xl font-bold text-white mb-2">{{ 'experience.senior.title' | translate }}</h3>
+          <p class="text-green-400 mb-4 text-sm md:text-base">{{ 'experience.senior.period' | translate }}</p>
+          <p class="text-gray-300 text-sm md:text-base">{{ 'experience.senior.description' | translate }}</p>
         </div>
       </div>
       
       <!-- Card desde la derecha -->
-      <div class="flex justify-end">
-        <div class="bg-gray-800 bg-opacity-40 p-8 rounded-2xl max-w-2xl hover:bg-opacity-60 experience-card from-right" 
+      <div class="flex justify-center md:justify-end">
+        <div class="bg-gray-800 bg-opacity-40 p-6 md:p-8 rounded-2xl w-full max-w-2xl hover:bg-opacity-60 experience-card from-right" 
              [class.visible]="isCardVisible(1)">
-          <h3 class="text-2xl font-bold text-white mb-2">{{ 'experience.fullstack.title' | translate }}</h3>
-          <p class="text-green-400 mb-4">{{ 'experience.fullstack.period' | translate }}</p>
-          <p class="text-gray-300">{{ 'experience.fullstack.description' | translate }}</p>
+          <h3 class="text-xl md:text-2xl font-bold text-white mb-2">{{ 'experience.fullstack.title' | translate }}</h3>
+          <p class="text-green-400 mb-4 text-sm md:text-base">{{ 'experience.fullstack.period' | translate }}</p>
+          <p class="text-gray-300 text-sm md:text-base">{{ 'experience.fullstack.description' | translate }}</p>
         </div>
       </div>
       
       <!-- Card desde la izquierda -->
-      <div class="flex justify-start">
-        <div class="bg-gray-800 bg-opacity-40 p-8 rounded-2xl max-w-2xl hover:bg-opacity-60 experience-card" 
+      <div class="flex justify-center md:justify-start">
+        <div class="bg-gray-800 bg-opacity-40 p-6 md:p-8 rounded-2xl w-full max-w-2xl hover:bg-opacity-60 experience-card" 
              [class.visible]="isCardVisible(2)">
-          <h3 class="text-2xl font-bold text-white mb-2">{{ 'experience.frontend.title' | translate }}</h3>
-          <p class="text-green-400 mb-4">{{ 'experience.frontend.period' | translate }}</p>
-          <p class="text-gray-300">{{ 'experience.frontend.description' | translate }}</p>
+          <h3 class="text-xl md:text-2xl font-bold text-white mb-2">{{ 'experience.frontend.title' | translate }}</h3>
+          <p class="text-green-400 mb-4 text-sm md:text-base">{{ 'experience.frontend.period' | translate }}</p>
+          <p class="text-gray-300 text-sm md:text-base">{{ 'experience.frontend.description' | translate }}</p>
         </div>
       </div>
       
       <!-- Card desde la derecha -->
-      <div class="flex justify-end">
-        <div class="bg-gray-800 bg-opacity-40 p-8 rounded-2xl max-w-2xl hover:bg-opacity-60 experience-card from-right" 
+      <div class="flex justify-center md:justify-end">
+        <div class="bg-gray-800 bg-opacity-40 p-6 md:p-8 rounded-2xl w-full max-w-2xl hover:bg-opacity-60 experience-card from-right" 
              [class.visible]="isCardVisible(3)">
-          <h3 class="text-2xl font-bold text-white mb-2">{{ 'experience.junior.title' | translate }}</h3>
-          <p class="text-green-400 mb-4">{{ 'experience.junior.period' | translate }}</p>
-          <p class="text-gray-300">{{ 'experience.junior.description' | translate }}</p>
+          <h3 class="text-xl md:text-2xl font-bold text-white mb-2">{{ 'experience.junior.title' | translate }}</h3>
+          <p class="text-green-400 mb-4 text-sm md:text-base">{{ 'experience.junior.period' | translate }}</p>
+          <p class="text-gray-300 text-sm md:text-base">{{ 'experience.junior.description' | translate }}</p>
         </div>
       </div>
       
       <!-- Card desde la izquierda -->
-      <div class="flex justify-start">
-        <div class="bg-gray-800 bg-opacity-40 p-8 rounded-2xl max-w-2xl hover:bg-opacity-60 experience-card" 
+      <div class="flex justify-center md:justify-start">
+        <div class="bg-gray-800 bg-opacity-40 p-6 md:p-8 rounded-2xl w-full max-w-2xl hover:bg-opacity-60 experience-card" 
              [class.visible]="isCardVisible(4)">
-          <h3 class="text-2xl font-bold text-white mb-2">{{ 'experience.freelance.title' | translate }}</h3>
-          <p class="text-green-400 mb-4">{{ 'experience.freelance.period' | translate }}</p>
-          <p class="text-gray-300">{{ 'experience.freelance.description' | translate }}</p>
+          <h3 class="text-xl md:text-2xl font-bold text-white mb-2">{{ 'experience.freelance.title' | translate }}</h3>
+          <p class="text-green-400 mb-4 text-sm md:text-base">{{ 'experience.freelance.period' | translate }}</p>
+          <p class="text-gray-300 text-sm md:text-base">{{ 'experience.freelance.description' | translate }}</p>
         </div>
       </div>
     </div>
@@ -204,12 +208,12 @@
       <img 
         src="./assets/images/jaime-jimenez.jpg" 
         alt="Jaime Jiménez - Full Stack Developer" 
-        class="modal-image w-80 h-80 rounded-2xl object-cover object-top shadow-2xl">
+        class="modal-image w-64 h-64 sm:w-80 sm:h-80 rounded-2xl object-cover object-top shadow-2xl">
       <div class="modal-overlay absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent rounded-2xl"></div>
-      <div class="modal-info absolute bottom-0 left-0 right-0 p-6 text-white">
-        <h3 class="text-2xl font-bold mb-2">{{ 'modal.title' | translate }}</h3>
-        <p class="text-green-300 mb-2">{{ 'modal.subtitle' | translate }}</p>
-        <p class="text-sm" [style.color]="isDarkMode ? '#d1d5db' : '#ffffff'">{{ 'modal.description' | translate }}</p>
+      <div class="modal-info absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white">
+        <h3 class="text-xl sm:text-2xl font-bold mb-2">{{ 'modal.title' | translate }}</h3>
+        <p class="text-green-300 mb-2 text-sm sm:text-base">{{ 'modal.subtitle' | translate }}</p>
+        <p class="text-xs sm:text-sm" [style.color]="isDarkMode ? '#d1d5db' : '#ffffff'">{{ 'modal.description' | translate }}</p>
       </div>
     </div>
     <button (click)="closeImageModal()" class="absolute top-4 right-4 text-white hover:text-green-400 transition-colors">
